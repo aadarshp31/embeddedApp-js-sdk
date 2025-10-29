@@ -1,0 +1,40 @@
+{
+  "name": "dummy-zoho-crm-widget-sdk-types",
+  "version": "0.0.4",
+  "description": "Type definitions for Zoho CRM Widget SDK v1.5 (ZOHO.embeddedApp / ZOHO.CRM / zrc)",
+  "license": "Apache-2.0",
+  "author": "",
+  "scripts": {
+    "pub": "npm version patch --force && npm publish --registry http://cm-npmregistry.csez.zohocorpin.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoho/embeddedApp-js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zoho/embeddedApp-js-sdk/issues"
+  },
+  "homepage": "https://github.com/zoho/embeddedApp-js-sdk",
+  "types": "types/index.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "zoho",
+    "crm",
+    "widget",
+    "sdk",
+    "types",
+    "typescript",
+    "zrc"
+  ],
+  "files": [
+    "types"
+  ],
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
