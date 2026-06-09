@@ -71,7 +71,7 @@ task concatJs(dependsOn: [transpileZSDK, transpileModernJsLibs]) {
     }
 }
 
-// 4. Minify concatenated JS files
+// 4. Minify concatenated JS files (Legacy - using Closure Compiler)
 task createJSSDK(type: MinifyJsTask, dependsOn: concatJs) {
     source = fileTree("$buildDir/concat") {
         include "ZohoEmbededAppSDK.concat.js"
@@ -93,6 +93,33 @@ task createJSSDK(type: MinifyJsTask, dependsOn: concatJs) {
             Files.walk(es5Dir.toPath()).sorted(Comparator.reverseOrder()).forEach { it.toFile().delete() }
         }
     }
+}
+
+// 5. Modern build task using Node.js and Terser (Recommended)
+task buildModern(type: Exec) {
+    group = 'build'
+    description = 'Build using modern Node.js build script with Terser'
+    commandLine 'npm', 'run', 'build'
+    
+    doLast {
+        println "Modern build completed. Output files:"
+        println "  - ${buildDir}/js/WDK.min.js"
+        println "  - ${buildDir}/js/connector-helper.min.js"
+    }
+}
+
+// 6. Build WDK bundle only
+task buildWDK(type: Exec) {
+    group = 'build'
+    description = 'Build WDK.min.js bundle only'
+    commandLine 'npm', 'run', 'build:wdk'
+}
+
+// 7. Build Connector bundle only
+task buildConnector(type: Exec) {
+    group = 'build'
+    description = 'Build connector-helper.min.js bundle only'
+    commandLine 'npm', 'run', 'build:connector'
 }
 
 task downloadJar(type: Copy) {
