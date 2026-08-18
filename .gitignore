@@ -11,3 +11,23 @@ temp
 test/lib/*
 tempImpl
 node_modules/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Build artifacts (keep build/js/ for distribution)
+build/temp/
+build/es5/
+build/concat/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
